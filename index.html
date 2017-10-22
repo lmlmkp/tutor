@@ -8,15 +8,35 @@
        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
        
     <style>
+       body{
+        /*background: #BDC1B9;*/
+           /*background: #1AD3F1;*/
+       }
+       .nav-n {
+           z-index: 9999;
+       }
+
+       /*导航区*/
+       .nav_t {
+           margin-top: 50px;
+           background: #BDC1B9;
+       }
+       .nav_t li a{
+       padding: 10px 10px;
+       }
+       .tab-c{
+           margin-top:105px ;
+       }
+      /*轮播区格式*/
        .fimg img{
        	width:100%;
        }
-       .flash{
-       	margin-top: 60px;
-       }
-       .tutor_list{
+
+       /*列表格式*/
+       .tutor_list,.student_list{
        	margin-top: 20px;
        }
+       /*列表标题格式*/
        hr{
         margin-top:10px;
         margin-bottom:10px;
@@ -26,10 +46,37 @@
         padding-bottom: 0;
         margin: 0;
        }
+       .more{
+           display: block;
+          float: right;
+       }
     </style>
     <script>
+
      $(function(){
      	$(' img').addClass('img-responsive center-block');
+
+
+         $('.nav-tabs a').click(function (e) {
+             e.preventDefault();
+             $(this).tab('show');
+         });
+         $('.tutor_list .more').click(function (e) {
+             e.preventDefault();
+             $('.nav .tutor  a').tab('show');
+         });
+         $('.student_list .more').click(function (e) {
+             e.preventDefault();
+             $('.nav .student  a').tab('show');
+         });
+//         $('.tutor_list .d').click(function () {
+//             $('.nav .success  a ').tab('show');
+//
+//         });
+//         $('.tutor_list .d').click(function () {
+//             $('.nav .success  a ').tab('show');
+//
+//         });
      })
 
     </script>
@@ -37,35 +84,48 @@
    </head>
 
  <body>
- <div class="container">
  <!-- 头部导航栏 开始-->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">  
+  <nav class="navbar navbar-inverse navbar-fixed-top nav-n " role="navigation">
     <div class="container">  
-        <div class="navbar-header">  
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  
-                data-target="#navbar" aria-expanded="false" aria-controls="navbar">  
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle " data-toggle="collapse"
+                data-target=".navbar-responsive-collapse" >
                 <span class="sr-only"></span>  
                 <span class="icon-bar"></span>  
                 <span class="icon-bar"></span>  
                 <span class="icon-bar"></span>  
             </button>  
-            <a class="navbar-brand" href="#">赣州家教</a>  
+            <a class="navbar-brand" href="#">赣州家教</a>
         </div>  
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">  
-            <ul class="nav navbar-nav">  
-                <li><a href="logoin.html">登录</a></li>  
+        <div class="navbar-collapse collapse navbar-responsive-collapse" >
+            <ul class="nav navbar-nav ">
+                <li><a href="logoin.html">登录</a></li>
                 <li><a href="#">注册</a></li>  
                 <li><a href="mypage.html">我的主页</a></li>  
             </ul>  
         </div>  
     </div>  
-</nav>
+  </nav>
 
 
 <!-- 头部导航栏结束 -->
+ <!--导航选项卡开始-->
+ <nav class="navbar navbar-default navbar-fixed-top nav_t" >
+     <ul class="nav nav-tabs nav-pills ">
+         <li class="home active"><a href="#home" >首页</a></li>
+         <li class="success"><a href="#success" >成功案例</a></li>
+         <li class="tutor"><a href="#tutor" >最新家教</a></li>
+         <li class="student"><a href="#student">最新学员</a></li>
+     </ul>
+ </nav>
+ <!--导航选项卡结束-->
 
+ <!--选项卡面板开始-->
+ <div class="tab-content tab-c">
+<!--首页面板开始-->
+  <div class="container tab-pane fade in active " id="home">
 <!-- 轮播图开始 -->
-<div  class="flash" data-ride="carousel" class="carousel slide" id="carousel-container">
+    <div   data-ride="carousel" class="carousel slide " id="carousel-container">
          <!-- 图片容器 -->
           <div class="carousel-inner fimg">
               <div class="item"><img src="images/d1.jpg" alt=""></div>
@@ -73,7 +133,7 @@
               <div class="item"><img src="images/d3.jpg" alt=""></div>
           </div>
           <!-- 圆圈指示符 -->
-          <ol class="carousel-indicators">
+          <ol class="carousel-indicators ">
              <li data-slide-to="0" data-target="#carousel-container"></li>
              <li data-slide-to="1" data-target="#carousel-container"></li>
              <li data-slide-to="2" data-target="#carousel-container" class="active"></li>
@@ -84,10 +144,16 @@
 <!-- 公告区开始 -->
 
 <!-- 家教列表区开始 -->
-<div class="tutor_list"> 
- <blockquote>最新家教</blockquote>
- <hr>
-   <div class="row">
+   <div class="tutor_list">
+    <blockquote>最新家教
+     <a href="" class="more">
+         更多
+            <span class="glyphicon glyphicon-menu-right "></span>
+     </a>
+    </blockquote>
+
+    <hr>
+    <div class="row">
        <div class="col-xs-6 col-md-3">
          <div class="thumbnail">
                <img src="./images/d3.jpg"  alt="">
@@ -117,7 +183,7 @@
                        中文专业 
                     </p>
                     <p>
-                    <a href="" class="btn btn-primary btn-xs">查看简历</a>
+                    <a href="" class="btn btn-primary btn-xs">详细信息</a>
                     <a href="" class="btn btn-primary btn-xs">预约</a>
 
                     </p>
@@ -135,7 +201,7 @@
                        中文专业 
                     </p>
                     <p>
-                    <a href="" class="btn btn-primary btn-xs">查看简历</a>
+                    <a href="" class="btn btn-primary btn-xs">详细信息</a>
                     <a href="" class="btn btn-primary btn-xs">预约</a>
 
                     </p>
@@ -153,7 +219,7 @@
                        中文专业 
                     </p>
                     <p>
-                    <a href="" class="btn btn-primary btn-xs">查看简历</a>
+                    <a href="" class="btn btn-primary btn-xs">详细信息</a>
                     <a href="" class="btn btn-primary btn-xs">预约</a>
 
                     </p>
@@ -165,8 +231,14 @@
 <!-- 家教列表区结束 -->
 
 <!-- 学员区域开始 -->
-<div class="tutor_list"> 
- <blockquote>最新学员</blockquote>
+<div class="student_list">
+ <blockquote>最新学员
+     <a href="" class="more">
+     更多
+     <span class="glyphicon glyphicon-menu-right "></span>
+    </a>
+ </blockquote>
+
  <hr>
    <div class="panel panel-primary">
       <div class="panel-heading">
@@ -219,5 +291,27 @@
 </div>
 <!-- 学员区域结束 -->
 </div>
+<!--首页面板结束-->
+
+<!--成功案例面板开始-->
+    <div class="tab-pane fade " id="success">
+        <div>
+           成功案例待写区
+        </div>
+    </div>
+<!--成功案例你面板结束-->
+<!--最新家教面板开始-->
+     <div class="tab-pane fade" id="tutor">
+         最新家教待写区
+         <a href="logoin.html">登录</a>
+     </div>
+<!--最新家教面板结束-->
+<!--最新学员面板开始-->
+     <div class="tab-pane fade" id="student">
+         最新学员待写区
+     </div>
+<!--最新学员面板结束-->
+</div>
+<!--选项卡面板结束-->
 </body>
 </html>
